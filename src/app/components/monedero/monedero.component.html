@@ -1,0 +1,53 @@
+<div class="main">
+    <div class="monedero">
+
+        <div class="usuario">
+            <img src="../../../assets/alcanciaa.jpg" alt="monedero">
+            <h1>Mi Alcancia</h1>
+            <p>Tienes en total  </p>
+            <b>{{total| currency}}</b>
+        </div>
+
+        
+   
+
+        <div class="contenedor">
+            <h4>Añade monedas a tu alcancia de forma segura.</h4>
+            <p>Establece el valor de las monedas teniendo en cuenta que solo se aceptan monedas de 1000,500, 200,100 y 50</p>
+            <form (ngSubmit)="enviarMonedas()">
+
+                <input [(ngModel)]="cantidad" type="text" name="cantidad" id="cantidad" placeholder="Cantidad de monedas">
+
+                
+                <p *ngIf="submit==true && valido==true">Solo se aceptan monedas de 1000, 500, 200, 100 y 50.</p>
+            
+                <input [(ngModel)]="nombre" type="text" name="valor" id="valor" placeholder="De cuanto es la moneda?">
+
+                <button type="submit"  class="button button2">Añadir monedas a mi alcancia</button>
+            </form>
+            
+        </div>
+    
+
+        <div class="monedas" >
+            <div class="tabla-monedas" *ngFor="let moneda of miMonedero">
+                
+                <img src="../../../assets/mil.jpg" alt="" *ngIf="moneda.nombre==1000">
+                <img src="../../../assets/quinientos.jpg" alt="" *ngIf="moneda.nombre==500">
+                <img src="../../../assets/doscientos.jpg" alt="" *ngIf="moneda.nombre==200">
+                <img src="../../../assets/cien.jpg" alt="" *ngIf="moneda.nombre==100">
+                <img src="../../../assets/nueva_50_sello_235_1.jpg" alt="" *ngIf="moneda.nombre==50">
+
+
+
+                <p><b>{{moneda.nombre}}</b> ({{moneda.cantidad}} monedas) </p>
+           
+                <p>{{moneda.nombre*moneda.cantidad | currency}}</p>
+                
+            </div>
+        </div>
+
+        
+    </div>
+
+  </div>
